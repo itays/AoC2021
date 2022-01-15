@@ -1,9 +1,43 @@
-const addition = (a: number, b: number): number => {
-  return a + b;
-};
+import { readFileSync } from 'fs';
 
-const number1 = 5;
-const number2 = 10;
-const result: number = addition(number1, number2);
+const data = readFileSync(__dirname + '/input.txt')
+  .toString()
+  .split('\n');
 
-console.log('The result is %d', result);
+function part1(data: string[]) {
+  let increases = 0;
+  for (let index = 1; index < data.length; index++) {
+    const input = +data[index];
+    const prev = +data[index - 1];
+    if (input > prev) {
+      increases++;
+    }
+  }
+  return increases;
+}
+
+// console.log(part1(data));
+
+function part2(data: string[]) {
+  const lines = data.map((val) => parseInt(val));
+  console.log(lines);
+  let currentSum = 0;
+  let nextSum = 0;
+  let increases = 0;
+  for (let i = 0; i < 3; i++) {
+    currentSum += lines[i];
+  }
+
+  for (let i = 3; i < lines.length; i++) {
+    const left = lines[i - 3];
+    const right = lines[i];
+    nextSum = currentSum - left + right;
+    if (nextSum > currentSum) {
+      increases++;
+    }
+    currentSum = nextSum;
+  }
+  return increases;
+}
+
+console.log(part2(data));
