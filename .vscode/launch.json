@@ -8,15 +8,11 @@
       "name": "ts-node",
       "type": "node",
       "request": "launch",
-      "args": [
-        "${relativeFile}"
-      ],
-      "runtimeArgs": [
-        "-r",
-        "ts-node/register"
-      ],
+      "args": ["${relativeFile}"],
+      "runtimeArgs": ["-r", "ts-node/register"],
       "cwd": "${workspaceRoot}",
       "protocol": "inspector",
+      "runtimeExecutable": "/Users/isidis/.nvm/versions/node/v16.13.0/bin/node",
       "internalConsoleOptions": "openOnSessionStart"
     }
   ]
