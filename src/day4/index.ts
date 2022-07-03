@@ -651,7 +651,9 @@ for (let i = 0; i < numbers.length; i++) {
 
   for (let j = 0; j < boards.length; j++) {
     const board = boards[j];
-
+    if (board.isComplete) {
+      continue;
+    }
     if (!board.numbers[num]) {
       continue;
     }
@@ -679,19 +681,20 @@ for (let i = 0; i < numbers.length; i++) {
 
       if (rows[markedNumber.row] === 5 || cols[markedNumber.col] === 5) {
         bingo = true;
+        board.isComplete = true;
         return;
       }
     });
 
     if (bingo) {
       winningScore = num * board.sumOfUnmarked;
-      break;
+      // break;
     }
   }
 
-  if (bingo) {
-    break;
-  }
+  // if (bingo) {
+  //   break;
+  // }
 }
 console.log(winningScore);
 console.log('done');
