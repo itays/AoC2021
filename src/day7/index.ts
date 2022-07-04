@@ -39,7 +39,7 @@ function part2() {
     let requiredFuel = 0;
     for (const num of positions) {
       const distance = Math.abs(num - pos);
-      // accumelate the distance by the partial sum of infinite series formula Tn = n*(n+1) / 2
+      // accumelate the distance by the partial sum of infinite series formula Tn = n*(n+1) / 2 (https://en.wikipedia.org/wiki/1_%2B_2_%2B_3_%2B_4_%2B_%E2%8B%AF)
       const cost = (distance * (distance + 1)) / 2;
       requiredFuel += cost;
     }
